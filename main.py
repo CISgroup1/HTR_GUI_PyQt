@@ -9,6 +9,7 @@ import sys
 import os
 import model
 
+
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()
