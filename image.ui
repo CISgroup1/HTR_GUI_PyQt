@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
-    <height>714</height>
+    <width>779</width>
+    <height>849</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>500</y>
+      <x>10</x>
+      <y>470</y>
       <width>281</width>
       <height>61</height>
      </rect>
@@ -43,8 +43,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>641</width>
-      <height>471</height>
+      <width>741</width>
+      <height>411</height>
      </rect>
     </property>
     <property name="text">
@@ -57,8 +57,8 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>500</y>
+      <x>470</x>
+      <y>470</y>
       <width>281</width>
       <height>61</height>
      </rect>
@@ -82,15 +82,21 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>600</y>
-      <width>281</width>
-      <height>61</height>
+      <y>590</y>
+      <width>731</width>
+      <height>181</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>16</pointsize>
      </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
