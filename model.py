@@ -1,3 +1,5 @@
+import difflib
+import enchant
 import numpy as np
 import cv2
 import imutils
@@ -19,14 +21,8 @@ for line in b_file:
     val_Y.append(stripped_line)
 b_file.close()
 
-# In[60]:
-
-
 train_Y = LB.fit_transform(train_Y)
 val_Y = LB.fit_transform(val_Y)
-
-
-# In[61]:
 
 
 def sort_contours(cnts, method="left-to-right"):
@@ -41,6 +37,7 @@ def sort_contours(cnts, method="left-to-right"):
                                         key=lambda b: b[1][i], reverse=reverse))
     # return the list of sorted contours and bounding boxes
     return (cnts, boundingBoxes)
+
 
 def get_letters(img):
     letters = []
@@ -69,6 +66,28 @@ def get_letters(img):
         letters.append(x)
     return letters, image
 
+
 def get_word(letter):
-    word = "".join(letter)
-    return word
+    prediction = "".join(letter)
+    dictionary = enchant.Dict("en_US")
+    if dictionary.check(prediction):
+        return prediction + '\n100% match'
+    else:
+        sim = dict()
+        suggestions = set(dictionary.suggest(prediction))
+
+        for word in suggestions:
+            measure = difflib.SequenceMatcher(None, prediction, word).ratio()
+            sim[measure] = word
+        if not suggestions:
+            return prediction + '\nUnrecognizable'
+        elif len(suggestions) == 1:
+            return prediction + "\nMost likely the word is: " + str(sim[max(sim.keys())])
+        else:
+            all_suggestion = dictionary.suggest(prediction)
+            all_result = ""
+            for word in all_suggestion:
+                all_result = all_result + word + ", "
+            all_result = all_result[:-2]
+            return prediction + "\nMost likely the word is: " + str(
+                sim[max(sim.keys())]) + '\nAll suggestions: ' + all_result
