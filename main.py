@@ -8,7 +8,7 @@ from PyQt5.QtGui import QPixmap
 import sys
 import os
 import model
-
+import matplotlib.pyplot as plt
 
 class UI(QMainWindow):
     def __init__(self):
@@ -21,6 +21,7 @@ class UI(QMainWindow):
         self.button = self.findChild(QPushButton, "pushButton")
         self.button2 = self.findChild(QPushButton, "pushButton_2")
         self.label = self.findChild(QLabel, "label")
+        self.label2 = self.findChild(QLabel, "label_2")
         self.textBrowser = self.findChild(QTextBrowser, "textBrowser")
 
         # Click The Dropdown Box
@@ -45,7 +46,13 @@ class UI(QMainWindow):
     def clicker2(self):
         letter, image = model.get_letters(self.flnm)
         word = model.get_word(letter)
+        document_path2 = os.path.expanduser('~\Pictures')
+        filename = document_path2 + 'recognizedImage.jpg'
+        self.pixmap = QPixmap(filename)
+        self.label2.setPixmap(self.pixmap)
+        self.label2.setScaledContents(True)
         self.textBrowser.setText(word)
+
 
 # Initialize The App
 app = QApplication(sys.argv)
