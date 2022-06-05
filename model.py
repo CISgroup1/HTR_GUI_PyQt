@@ -2,6 +2,7 @@ import difflib
 import enchant
 import numpy as np
 import cv2
+import os
 import imutils
 from keras.models import load_model
 from sklearn.preprocessing import LabelBinarizer
@@ -40,13 +41,19 @@ def sort_contours(cnts, method="left-to-right"):
 
 
 def get_letters(img):
+    document_path = os.path.expanduser('~\Pictures')
+    filename = document_path + 'recognizedImage.jpg'
     letters = []
     image = cv2.imread(img)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     ret, thresh1 = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV)
     dilated = cv2.dilate(thresh1, None, iterations=2)
-
     cnts = cv2.findContours(dilated.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(image=dilated.copy(), mode=cv2.RETR_EXTERNAL, method=cv2.CHAIN_APPROX_SIMPLE)
+    image_copy = image.copy()
+    cv2.drawContours(image=image_copy, contours=contours, contourIdx=-1, color=(0, 255, 0), thickness=1,
+                     lineType=cv2.LINE_AA)
+    cv2.imwrite(filename, image_copy)
     cnts = imutils.grab_contours(cnts)
     cnts = sort_contours(cnts, method="left-to-right")[0]
     # loop over the contours
