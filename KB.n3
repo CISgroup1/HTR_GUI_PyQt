@@ -1,0 +1,21 @@
+@prefix class: <URN:class> .
+@prefix ind: <URN:inds:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ind:hyp0 a class:Hyperparameter ;
+    rdfs:label "batch_size" ;
+    rdf:value 64 .
+
+ind:hyp1 a class:Hyperparameter ;
+    rdfs:label "epochs" ;
+    rdf:value 20 .
+
+ind:hyp2 a class:Hyperparameter ;
+    rdfs:label "CNN_kernel_size" ;
+    rdf:value 3 .
+
+ind:hyp3 a class:Hyperparameter ;
+    rdfs:label "MaxPooling_kernel_size" ;
+    rdf:value 2 .
+
