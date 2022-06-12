@@ -3,7 +3,6 @@ import enchant
 import numpy as np
 import cv2
 import os
-import imutils
 from keras.models import load_model
 from sklearn.preprocessing import LabelBinarizer
 
