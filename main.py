@@ -10,6 +10,7 @@ import os
 import model
 import matplotlib.pyplot as plt
 
+
 class UI(QMainWindow):
     def __init__(self):
         super(UI, self).__init__()

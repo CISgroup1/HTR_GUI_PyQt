@@ -1,6 +1,5 @@
 import difflib
 import enchant
-import numpy as np
 import cv2
 import os
 from keras.models import load_model
@@ -34,6 +33,8 @@ def sort_contours(cnts):
 
 
 def get_letters(img):
+    document_path = os.path.expanduser('~\Pictures')
+    filename = document_path + 'recognizedImage.jpg'
     letters = []
     image = cv2.imread(img)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -41,6 +42,11 @@ def get_letters(img):
     dilated = cv2.dilate(thresh1, None, iterations=2)
 
     cnts = cv2.findContours(dilated, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(image=dilated.copy(), mode=cv2.RETR_EXTERNAL, method=cv2.CHAIN_APPROX_SIMPLE)
+    image_copy = image.copy()
+    cv2.drawContours(image=image_copy, contours=contours, contourIdx=-1, color=(0, 255, 0), thickness=1,
+                     lineType=cv2.LINE_AA)
+    cv2.imwrite(filename, image_copy)
     cnts = cnts[0]
     cnts = sort_contours(cnts)
     # loop over the contours
