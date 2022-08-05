@@ -10,4 +10,7 @@ If you want to change GUI you can edit image.ui file in QtDesigner
 (I've downloaded it here https://build-system.fman.io/qt-designer-download)
 You can edit .py files in any editor, I usually do it in PyCharm
 ### Model
-TBD
+CNN + MaxPooling
+
+Web version
+https://j47fhtyzu3q5zaao.anvil.app/WGWQ3TPZMFB636QBLFANSC6A
