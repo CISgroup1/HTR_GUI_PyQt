@@ -12,5 +12,5 @@ You can edit .py files in any editor, I usually do it in PyCharm
 ### Model
 CNN + MaxPooling
 
-###Web version:
+Web version:
 https://j47fhtyzu3q5zaao.anvil.app/WGWQ3TPZMFB636QBLFANSC6A
